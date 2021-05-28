@@ -56,28 +56,32 @@ const pacientes = [
 ];
 
 function informacionPacientes(personas) {
-  let nPacientes = personas.length;
-  console.log(personas);
-  console.log(nPacientes);
-  let nMayoresEdad = personas.filter((persona) => persona.paciente.edad >= 18);
-  console.log(nMayoresEdad.length);
-  let nHombresDiabeticos = personas.filter(
+  const numPacientes = personas.length;
+  const numMayoresEdad = personas.filter(
+    (persona) => persona.paciente.edad >= 18
+  );
+  const numHombresDiabeticos = personas.filter(
     (persona) => persona.dieta === "Diabetes" && persona.paciente.sexo === "H"
   );
-  console.log(nHombresDiabeticos.length);
-  let totatlDiasIngreso = personas.reduce(
+  const totalDiasIngresados = personas.reduce(
     (acumulador, persona) => acumulador + persona.diasIngresado,
     0
   );
-  console.log(totatlDiasIngreso);
-  let mediaEdadMujeres = personas
+  const mediaEdadMuj = personas
     .filter((persona) => persona.paciente.sexo === "M")
     .reduce(
       (acumulador, persona, index, mujeresPacientes) =>
         persona.paciente.edad / mujeresPacientes.length + acumulador,
       0
     );
-  console.log(mediaEdadMujeres);
+  const infoPacientes = {
+    nPacientes: numPacientes,
+    nHombresDiabeticos: numHombresDiabeticos,
+    totalDiasIngreso: totalDiasIngresados,
+    mediaEdadMujeres: mediaEdadMuj,
+  };
+  console.log(infoPacientes);
+  return infoPacientes;
 }
 
 informacionPacientes(pacientes);
