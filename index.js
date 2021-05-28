@@ -76,7 +76,7 @@ function informacionPacientes(personas) {
     );
   const infoPacientes = {
     nPacientes: numPacientes,
-    nHombresDiabeticos: numHombresDiabeticos,
+    nHombresDiabeticos: numHombresDiabeticos.length,
     totalDiasIngreso: totalDiasIngresados,
     mediaEdadMujeres: mediaEdadMuj,
   };
