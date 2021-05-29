@@ -55,19 +55,19 @@ const pacientes = [
   },
 ];
 
-function informacionPacientes(personas) {
-  const nPacientes = personas.length;
-  const nMayoresEdad = personas.filter(
+function informacionPacientes(pacientes) {
+  const nPacientes = pacientes.length;
+  const nMayoresEdad = pacientes.filter(
     ({ paciente: { edad } }) => edad >= 18
   ).length;
-  const nHombresDiabeticos = personas.filter(
+  const nHombresDiabeticos = pacientes.filter(
     ({ paciente, dieta }) => dieta === "Diabetes" && paciente.sexo === "H"
   ).length;
-  const totalDiasIngreso = personas.reduce(
+  const totalDiasIngreso = pacientes.reduce(
     (acumulador, { diasIngresado }) => acumulador + diasIngresado,
     0
   );
-  const mediaEdadMujeres = personas
+  const mediaEdadMujeres = pacientes
     .filter(({ paciente: { sexo } }) => sexo === "M")
     .reduce(
       (acumulador, { paciente: { edad } }, index, mujeresPacientes) =>
