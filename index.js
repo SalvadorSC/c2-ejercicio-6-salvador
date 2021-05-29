@@ -58,26 +58,26 @@ const pacientes = [
 function informacionPacientes(personas) {
   const nPacientes = personas.length;
   const nMayoresEdad = personas.filter(
-    (persona) => persona.paciente.edad >= 18
-  );
+    ({ paciente: { edad } }) => edad >= 18
+  ).length;
   const nHombresDiabeticos = personas.filter(
-    (persona) => persona.dieta === "Diabetes" && persona.paciente.sexo === "H"
-  );
+    ({ paciente, dieta }) => dieta === "Diabetes" && paciente.sexo === "H"
+  ).length;
   const totalDiasIngreso = personas.reduce(
-    (acumulador, persona) => acumulador + persona.diasIngresado,
+    (acumulador, { diasIngresado }) => acumulador + diasIngresado,
     0
   );
   const mediaEdadMujeres = personas
-    .filter((persona) => persona.paciente.sexo === "M")
+    .filter(({ paciente: { sexo } }) => sexo === "M")
     .reduce(
-      (acumulador, persona, index, mujeresPacientes) =>
-        persona.paciente.edad / mujeresPacientes.length + acumulador,
+      (acumulador, { paciente: { edad } }, index, mujeresPacientes) =>
+        edad / mujeresPacientes.length + acumulador,
       0
     );
   const infoPacientes = {
     nPacientes,
     nMayoresEdad,
-    nHombresDiabeticos: nHombresDiabeticos.length,
+    nHombresDiabeticos,
     totalDiasIngreso,
     mediaEdadMujeres,
   };
