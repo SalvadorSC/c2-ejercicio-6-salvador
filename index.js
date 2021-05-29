@@ -81,8 +81,7 @@ function informacionPacientes(pacientes) {
     totalDiasIngreso,
     mediaEdadMujeres,
   };
-  console.log(infoPacientes);
   return infoPacientes;
 }
 
-informacionPacientes(pacientes);
+console.log(informacionPacientes(pacientes));
